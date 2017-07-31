@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { List } from 'semantic-ui-react';
-//import axios from 'axios';
-//var XMLParser = require('react-xml-parser');
+import Blogdetails from './Blogdetails';
 import feed from '../feed.json';
-//var data = require('../feed.json');
-//var data = require('../feed.json');
+
+//const Hashcode = require('hashcode')
+
 
 class Blog extends Component {
 
@@ -14,23 +14,11 @@ constructor(props) {
     	blog: feed.items
 
     } 
-console.log(this.state.blog)
-
+console.log(this.state.blog[0].content)
 }
+titleClick(event) {
 
-// componentDidMount() {
-//       axios({
-//         method:'get',
-//         url:'https://lightrains.com/feed.xml',
-//         responseType:'json',
-//         headers: {'X-Requested-With': 'XMLHttpRequest'}
-//       })
-//       .then(function(response) {
-
-//       var xml = new XMLParser().parseFromString(response.data);
-//            console.log(xml)
-//     });
-// }
+  }
 
   render() {
 
@@ -41,13 +29,17 @@ console.log(this.state.blog)
         <List divided relaxed key={key}>
         <List.Item >
           <List.Icon name='github' size='large' verticalAlign='middle' />
-          <List.Content >
-            <List.Header as='a'>{elements.title}</List.Header>
+          <List.Content>
+            <List.Header as='a' onClick={this.titleClick(key)}>{elements.title}</List.Header>
             <List.Description as='a'></List.Description>
           </List.Content>
         </List.Item>
-      </List>  
-        )}      	
+         <Blogdetails description={elements.content}/> 
+      </List>
+
+        )}
+             
+
       </div>
 
     );
