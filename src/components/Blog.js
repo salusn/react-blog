@@ -1,89 +1,57 @@
 import React, { Component } from 'react';
 import { List } from 'semantic-ui-react';
-
-var XMLParser = require('react-xml-parser');
-
+//import axios from 'axios';
+//var XMLParser = require('react-xml-parser');
+import feed from '../feed.json';
+//var data = require('../feed.json');
+//var data = require('../feed.json');
 
 class Blog extends Component {
 
 constructor(props) {
     super(props);
     this.state = {
-    	blog: [
-    	{
-    		title: "lightrains1",
-    		body : "Why do the template files containing JSX have .js extensions?",
-    		date : "July 6th"
-    	},
-    	{
-    		title: "lightrains2",
-    		body : "Why do the template files containing JSX have .js extensions?",
-    		date : "July 7th"
-    	},
-    	{
-    		title: "lightrains3",
-    		body : "Why do the template files containing JSX have .js extensions?",
-    		date : "July 8th"
-    	}
-    	]
-    }
+    	blog: feed.items
 
-    //console.log(parser)
-    
+    } 
+console.log(this.state.blog)
+
 }
 
+// componentDidMount() {
+//       axios({
+//         method:'get',
+//         url:'https://lightrains.com/feed.xml',
+//         responseType:'json',
+//         headers: {'X-Requested-With': 'XMLHttpRequest'}
+//       })
+//       .then(function(response) {
 
-// getXHR(url) {
-//   return new Promise(function(resolve, reject) {
-//     var req = new XMLHttpRequest();
-//     req.open('GET', url);
-//     req.onload = function() {
-//       if (req.status === 200) {
-//         resolve(req.response);
-//       } else {
-//         reject(Error(req.statusText));
-//       }
-//     };
-//     req.onerror = function() {
-//       reject(Error("Network Error"));
-//     };
-//     req.send();
-//   });
-// };
-
-
-
-// getJson () {
-//     this.getXHR('https://lightrains.com/feed.xml').then(function(response) {
-//       var xml = new XMLParser().parseFromString(response);
-//     console.log(xml)
-    
-//     }, function(error) {
-//       console.error(error);
+//       var xml = new XMLParser().parseFromString(response.data);
+//            console.log(xml)
 //     });
 // }
 
   render() {
 
-    //const result = this.getJson()
-
     return (
       <div>
+        {this.state.blog.map((elements, key) =>
 
-      	{this.state.blog.map((elements, key) =>
-      	<List divided relaxed key={key}>
-		    <List.Item >
-		      <List.Icon name='github' size='large' verticalAlign='middle' />
-		      <List.Content >
-		        <List.Header as='a'>{elements.title}</List.Header>
-		        <List.Description as='a'>{elements.date}</List.Description>
-		      </List.Content>
-		    </List.Item>
-  		</List>  
-      	)}
-      	 	
+        <List divided relaxed key={key}>
+        <List.Item >
+          <List.Icon name='github' size='large' verticalAlign='middle' />
+          <List.Content >
+            <List.Header as='a'>{elements.title}</List.Header>
+            <List.Description as='a'></List.Description>
+          </List.Content>
+        </List.Item>
+      </List>  
+        )}      	
       </div>
+
     );
+
   }
 }
 
