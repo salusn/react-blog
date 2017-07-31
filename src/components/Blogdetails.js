@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Blogdetails = (props) => {
+	console.log(props)
 	
   return (
       <div>
-       {props.name}
+       {props.description}
       </div>
     );
 }

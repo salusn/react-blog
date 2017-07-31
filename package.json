@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "hashcode": "^1.0.3",
     "json-loader": "^0.5.7",
+    "object-hash": "^1.1.8",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-xml-parser": "^1.0.2",
